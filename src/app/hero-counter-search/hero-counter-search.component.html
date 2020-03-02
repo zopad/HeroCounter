@@ -1,0 +1,7 @@
+<p>hero-counter-search works!</p>
+<input type="search" placeholder="Hero to counter...">
+<input type="submit" value="Search">
+
+<ol>
+  <li *ngFor="let hero of heroes"><img src={{hero.url_large_portrait}}> {{hero.localized_name}}</li>
+</ol>
