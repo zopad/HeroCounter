@@ -1,7 +1,13 @@
-<p>hero-counter-search works!</p>
-<input type="search" placeholder="Hero to counter...">
-<input type="submit" value="Search">
 
+<mat-form-field>
+  <input type="text" matInput [formControl]="searchControl"
+  [matAutocomplete]="auto" placeholder="Hero to counter...">
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+      {{option}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
 <ol>
   <li *ngFor="let hero of heroes"><img src={{hero.url_large_portrait}}> {{hero.localized_name}}</li>
 </ol>
