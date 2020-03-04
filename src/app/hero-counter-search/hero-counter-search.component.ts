@@ -13,8 +13,7 @@ import {map, startWith} from 'rxjs/operators';
 export class HeroCounterSearchComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
-  private heroes: IHeroData[] = [];
-
+  heroes: IHeroData[] = [];
   searchControl = new FormControl();
   options: string[] = heroesJson.heroes.map(h => h.localized_name).sort();
   filteredOptions: Observable<string[]>;
