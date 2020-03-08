@@ -1,5 +1,8 @@
-
-<mat-form-field>
+<link rel="stylesheet" href="otherStyles.css">
+<br/>
+<mat-card style="text-align: center;">
+  <mat-card-content>
+<mat-form-field style="font-size: large;">
   <input type="text" matInput [formControl]="searchControl"
   [matAutocomplete]="auto" placeholder="Hero to counter...">
   <mat-autocomplete #auto="matAutocomplete">
@@ -8,6 +11,21 @@
     </mat-option>
   </mat-autocomplete>
 </mat-form-field>
-<ol>
-  <li *ngFor="let hero of heroes"><img src={{hero.url_large_portrait}}> {{hero.localized_name}}</li>
-</ol>
+</mat-card-content>
+</mat-card>
+<table class="content-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Portrait</th>
+      <th>Winrate (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let hero of heroes">
+      <td>{{hero.localized_name}}</td>
+      <td><img src="{{hero.url_large_portrait}}"></td>
+      <td>{{hero.winrate}}%</td>
+    </tr>
+  </tbody>
+</table>
