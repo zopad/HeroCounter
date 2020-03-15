@@ -14,15 +14,15 @@
 </mat-card>
 <table class="content-table">
   <thead>
-    <tr onclick="copyName()">
+    <tr>
       <th>Name</th>
       <th>Portrait</th>
       <th>Winrate (%)</th>
     </tr>
   </thead>
   <tbody *ngIf="!loading">
-    <tr *ngFor="let hero of heroes">
-      <td id="name">{{hero.localized_name}}</td>
+    <tr *ngFor="let hero of heroes" (click)="copyName(hero)">
+      <td>{{hero.localized_name}}</td>
       <td><img src="{{hero.url_large_portrait}}"></td>
       <td>{{hero.winrate}}%</td>
     </tr>
@@ -42,12 +42,3 @@
   </tr>
   </tbody>
 </table>
-
-<script>
-  function copyName(){
-    var name = document.getElementById("name");
-    name.select();
-    name.setSelectionRange(0, 99999); //For mobile devices
-    document.execCommand("copy");
-  }
-</script>

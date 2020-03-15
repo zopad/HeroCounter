@@ -19,6 +19,12 @@ export class HeroCounterSearchComponent implements OnInit {
   filteredOptions: Observable<string[]>;
   loading = true;
 
+  copyName(hero: IHeroData): void{
+  //  window.prompt("Copy to clipboard: Ctrl+C, Enter", hero.localized_name);
+  // should be ok in ff, chromium browsers
+    navigator.clipboard.writeText(hero.localized_name);
+  }
+
   ngOnInit() {
     this.filteredOptions = this.searchControl.valueChanges.pipe(startWith(''), map(value => this._filter(value)));
     this.searchControl.valueChanges.subscribe(value => {
