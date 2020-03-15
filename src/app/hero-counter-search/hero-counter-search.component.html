@@ -3,7 +3,7 @@
   <mat-card-content>
 <mat-form-field style="font-size: large;">
   <input type="text" matInput [formControl]="searchControl"
-  [matAutocomplete]="auto" placeholder="Hero to counter...">
+  [matAutocomplete]="auto" placeholder="Hero to counter..." autofocus>
   <mat-autocomplete #auto="matAutocomplete">
     <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
       {{option}}
@@ -14,7 +14,7 @@
 </mat-card>
 <table class="content-table">
   <thead>
-    <tr>
+    <tr onclick="copyName()">
       <th>Name</th>
       <th>Portrait</th>
       <th>Winrate (%)</th>
@@ -22,7 +22,7 @@
   </thead>
   <tbody *ngIf="!loading">
     <tr *ngFor="let hero of heroes">
-      <td>{{hero.localized_name}}</td>
+      <td id="name">{{hero.localized_name}}</td>
       <td><img src="{{hero.url_large_portrait}}"></td>
       <td>{{hero.winrate}}%</td>
     </tr>
@@ -42,3 +42,12 @@
   </tr>
   </tbody>
 </table>
+
+<script>
+  function copyName(){
+    var name = document.getElementById("name");
+    name.select();
+    name.setSelectionRange(0, 99999); //For mobile devices
+    document.execCommand("copy");
+  }
+</script>
