@@ -3,7 +3,7 @@
   <mat-card-content>
 <mat-form-field style="font-size: large;">
   <input type="text" matInput [formControl]="searchControl"
-  [matAutocomplete]="auto" placeholder="Hero to counter...">
+  [matAutocomplete]="auto" placeholder="Hero to counter..." autofocus>
   <mat-autocomplete #auto="matAutocomplete">
     <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
       {{option}}
@@ -21,7 +21,7 @@
     </tr>
   </thead>
   <tbody *ngIf="!loading">
-    <tr *ngFor="let hero of heroes">
+    <tr *ngFor="let hero of heroes" (click)="copyName(hero)">
       <td>{{hero.localized_name}}</td>
       <td><img src="{{hero.url_large_portrait}}"></td>
       <td>{{hero.winrate}}%</td>
